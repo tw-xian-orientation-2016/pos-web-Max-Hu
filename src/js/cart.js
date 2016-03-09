@@ -31,6 +31,7 @@ $( document ).ready(function() {
         addToReceipts(receipt);
         localStorage.setItem('temple-receipt',JSON.stringify(receipt));
         window.location.replace("/receipt.html");
+        localStorage.removeItem('cart');
     });
 });
 
@@ -43,7 +44,7 @@ function addToReceipts(receipt){
 
 function getReceipt(){
     var cartItems = JSON.parse(localStorage.cart);
-    var total = getTotal(getCartItems());
+    var total = getTotal(getCartItems(JSON.parse(localStorage.cart)));
     var receipt = {};
     receipt.carItems = cartItems;
     receipt.total = total;
@@ -52,7 +53,7 @@ function getReceipt(){
 }
 
 function refreshTotal(){
-    var total = getTotal(getCartItems());
+    var total = getTotal(getCartItems(JSON.parse(localStorage.cart)));
     $("[name='checkout-total']").text('Check Out : ' + formatNumber(total));
 }
 
@@ -71,7 +72,7 @@ function updateCartItem(cartItem){
 }
 
 function loadCartItems(){
-    var cartItems = getCartItems();
+    var cartItems = getCartItems(JSON.parse(localStorage.cart));
     var strHtml = '';
     cartItems.forEach(function(cartItem){
         strHtml += createCartHtml(cartItem);
@@ -88,22 +89,6 @@ function getTotal(cartItems){
     return total;
 }
 
-function getCartItems(){
-    var cart = JSON.parse(localStorage.cart);
-    var items = JSON.parse(localStorage.items);
-    var cartItems = [];
-    cart.forEach(function(cartItem){
-        items.forEach(function(item){
-            if (item.barcode === cartItem.barcode) {
-                var existItem = {};
-                existItem.count = cartItem.count;
-                existItem.item = item;
-                cartItems.push(existItem);
-            }
-        })
-    })
-    return cartItems;
-}
 
 function createCartHtml(cartItem) {
     var strHtml = "";

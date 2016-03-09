@@ -36,3 +36,19 @@ function removeItembyBarcode(barcode,items){
     })
     return result;
 }
+
+function getCartItems(cart){
+    var items = JSON.parse(localStorage.items);
+    var cartItems = [];
+    cart.forEach(function(cartItem){
+        items.forEach(function(item){
+            if (item.barcode === cartItem.barcode) {
+                var existItem = {};
+                existItem.count = cartItem.count;
+                existItem.item = item;
+                cartItems.push(existItem);
+            }
+        })
+    })
+    return cartItems;
+}
