@@ -1,14 +1,9 @@
 $( document ).ready(function() {
-    $.getJSON( 'data/Items.json', function( data ) {
-        localStorage.setItem("items",JSON.stringify(data));
-    });
+    initData();
     var strHtml = loadItems();
     $("tbody").html(strHtml);
 
     $("[name='add_to_cart']").click(function() {
-        if (localStorage.cart === undefined) {
-            localStorage.setItem('cart','[]');
-        }
         var cartItems = JSON.parse(localStorage.cart);
         var cartItem = createCartItem($(this).data('itemid'),1);
         localStorage.cart = JSON.stringify(updateCartItem(cartItems,cartItem));
@@ -45,19 +40,19 @@ function createCartItem(barcode,count){
 
 function loadItems (){
     var items = JSON.parse(localStorage.items);
-    var strHtml = createHtml('','','');
+    var strHtml = "";
     items.forEach(function(item){
-        strHtml += createHtml(item.name,item.price,item.barcode);
+        strHtml += createHtml(item);
     });
     return strHtml;
 }
 
-function createHtml(name,price,id) {
+function createHtml(item) {
     var strHtml = "";
     strHtml += '<tr>';
-    strHtml += '<td>' + name + '</td>';
-    strHtml += '<td>' + price + '(元)' + '</td>';
-    strHtml += '<td><button type="button" data-ItemID = "' + id + '" class="btn btn-success" name="add_to_cart" >+</button></td>';
+    strHtml += '<td>' + item.name + '</td>';
+    strHtml += '<td>' + item.price + '(元)/' + item.unit + '</td>';
+    strHtml += '<td><button type="button" data-itemid = "' + item.barcode + '" class="btn btn-success" name="add_to_cart" >+</button></td>';
     strHtml += '</tr>';
     return strHtml;
 }
