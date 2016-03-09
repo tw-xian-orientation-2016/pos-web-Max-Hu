@@ -13,8 +13,11 @@ $( document ).ready(function() {
 
     $("[name='cart']").click(function() {
         window.location.replace("/cart.html");
-
     });
+    $("[name='receipts']").click(function() {
+        window.location.replace("/receiptList.html");
+    });
+
 
 });
 

@@ -7,6 +7,9 @@ $( document ).ready(function() {
         localStorage.removeItem('temple-receipt')
         window.location.replace("/");
     });
+    $("[name='receipts']").click(function() {
+        window.location.replace("/receiptList.html");
+    });
 
 });
 

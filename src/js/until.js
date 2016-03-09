@@ -18,6 +18,17 @@ function formatNumber(number) {
     return parseFloat(number).toFixed(2);
 }
 
+function findReceiptFromId(id){
+    var receipt;
+    var receipts = JSON.parse(localStorage.getItem('receipts'));
+    receipts.forEach(function(element){
+        if (element.id === id) {
+            receipt = element;
+        }
+    })
+    return receipt;
+}
+
 function findItembyBarcode(barcode,items){
     var item;
     items.forEach(function(element){

@@ -5,6 +5,9 @@ $( document ).ready(function() {
     $("[name='home']").click(function() {
         window.location.replace("/");
     });
+    $("[name='receipts']").click(function() {
+        window.location.replace("/receiptList.html");
+    });
     $("[name='input-count']").on('input', function (){
         if ($(this).val() != '') {
             var cartItem = {};
