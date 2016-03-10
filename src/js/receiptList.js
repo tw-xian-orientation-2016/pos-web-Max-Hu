@@ -27,9 +27,10 @@ function loadReceipts(receipts){
 function getReceiptHtml(receipt){
     var strHtml = "";
     strHtml += '<tr>';
-    strHtml += '<td>' + receipt.id + '</td>';
-    strHtml += '<td>' + receipt.total + '(元)</td>';
-    strHtml += '<td><button type="button" data-receiptid = "' + receipt.id + '" class="btn btn-success" name="receipt-details" >Detail</button></td>';
+    strHtml += '<td class="text-center">' + receipt.id + '</td>';
+    strHtml += '<td class="text-center">' + formatNumber(receipt.total) + '(元)</td>';
+    strHtml += '<td class="text-center">' + receipt.date + '</td>';
+    strHtml += '<td class="text-center"><button type="button" data-receiptid = "' + receipt.id + '" class="btn btn-success" name="receipt-details" >Detail</button></td>';
     strHtml += '</tr>';
     return strHtml;
 }
