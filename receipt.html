@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="lib/bootstrap-3.3.5-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="lib/font-awesome-4.5.0/css/font-awesome.min.css"></head>
+    <link rel="stylesheet" href="src/css/format.css"></head>
+    <link rel="stylesheet" href="src/css/print.css" media="print" ></head>
+    <script type="text/javascript" src="lib/jquery-2.2.1/jquery-2.2.1.min.js"></script>
+    <script type="text/javascript" src="src/js/receipt.js"></script>
+    <script type="text/javascript" src="src/js/receiptFunction.js"></script>
+    <script type="text/javascript" src="src/js/until.js"></script>
+    <script src="lib/bootstrap-3.3.5-dist/css/bootstrap.min.css"></script>
+</head>
+<body>
+<nav class="navbar navbar-default navbar-fixed-top" id="top-navbar">
+    <div class="container" >
+        <div id="header" >
+            <ul class="nav nav-pills nav-justified">
+                <li role="presentation" class="text-center"><a href="#" name="home">Home</a></li>
+                <li role="presentation" class="text-center"><a href="#" name="receipts">Receipts<span name="receipt-length" class="badge">0</span></a></li>
+                <li role="presentation" class="text-center"><a href="#" name="cart">Cart<span name = "cart-length" class="badge">0</span></a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div id="cartItems">
+    <table class="table table-condensed table-hover" id="cart-list">
+        <tbody>
+        </tbody>
+    </table>
+    <div id="total" class="blockquote-reverse"></div>
+</div>
+<nav class="navbar navbar-default navbar-fixed-bottom">
+    <div class="container">
+        <ul class="nav nav-pills nav-justified navbar-right">
+            <li role="presentation" class="text-center checkout"><a href="#" name="total-price">Total : 0.00</a></li>
+        </ul>
+    </div>
+</nav>
+
+
+</body>
+</html>
